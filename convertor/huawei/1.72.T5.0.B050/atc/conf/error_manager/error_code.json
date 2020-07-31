@@ -1,0 +1,594 @@
+{
+  "error_info_list" : [
+    {
+      "ErrCode" : "E10000",
+      "ErrMessage" : "Input parameter[--%s]'s value is empty!",
+      "Arglist" : "parameter"
+    },
+    {
+      "ErrCode" : "E10001",
+      "ErrMessage" : "Input parameter[--%s]'s value[%s] is illegal. The path can only contains 'a-z' 'A-Z' '0-9' '-' '.' '_' and chinese character.",
+      "Arglist" : "parameter,path"
+    },
+    {
+      "ErrCode" : "E10002",
+      "ErrMessage" : "Path[%s]'s realpath is empty, errmsg[%s]",
+      "Arglist" : "path,errmsg"
+    },
+    {
+      "ErrCode" : "E10003",
+      "ErrMessage" : "Read path[%s] failed, errmsg[%s]",
+      "Arglist" : "path,errmsg"
+    },
+    {
+      "ErrCode" : "E10004",
+      "ErrMessage" : "Write file[%s] failed, input path is %s, errmsg[%s]",
+      "Arglist" : "realpath,path,errmsg"
+    },
+    {
+      "ErrCode" : "E10005",
+      "ErrMessage" : "Can not create prefix path for path[%s].",
+      "Arglist" : "path"
+    },
+    {
+      "ErrCode" : "E10006",
+      "ErrMessage" : "Input parameter[--disable_reuse_memory]'s value must be 1 or 0.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10007",
+      "ErrMessage" : "Input parameter[--framework] is mandatory and it's value must be: 0(Caffe) or 1(MindSpore) or 3(TensorFlow).",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10008",
+      "ErrMessage" : "Input parameter[--weight] is mandatory when framework is 0(CAFFE)!",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10009",
+      "ErrMessage" : "--%s and --%s can not both exist!",
+      "Arglist" : "parameter0,parameter1"
+    },
+    {
+      "ErrCode" : "E10010",
+      "ErrMessage" : "Input parameter[--input_shape]’s shape is [%s], correct sample is input_name1:n1,c1,h1,w1",
+      "Arglist" : "shape"
+    },
+    {
+      "ErrCode" : "E10011",
+      "ErrMessage" : "Input parameter[--input_shape]’s shape is [%s], shape can not empty, correct sample is input_name1:n1,c1,h1,w1",
+      "Arglist" : "shape"
+    },
+    {
+      "ErrCode" : "E10012",
+      "ErrMessage" : "--input_shape's shape value[%s] exist float number the correct sample is \"input_name1:1,3,224,224\"",
+      "Arglist" : "shape"
+    },
+    {
+      "ErrCode" : "E10013",
+      "ErrMessage" : "Input parameter[--%s]’s shape_value_str[%s] cause out of range execption!",
+      "Arglist" : "parameter,shape"
+    },
+    {
+      "ErrCode" : "E10014",
+      "ErrMessage" : "Input parameter[--%s]’s shape_value_str[%s] cause invalid argument!",
+      "Arglist" : "parameter,shape"
+    },
+    {
+      "ErrCode" : "E10015",
+      "ErrMessage" : "Input parameter[--%s]’s shape_value_str[%s] stol fail!",
+      "Arglist" : "parameter,shape"
+    },
+    {
+      "ErrCode" : "E10016",
+      "ErrMessage" : "invalid value for --log:%s",
+      "Arglist" : "loglevel"
+    },
+    {
+      "ErrCode" : "E10017",
+      "ErrMessage" : "--input_shape's shape size can not be less than 1 when set --dynamic_batch_size.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10018",
+      "ErrMessage" : "Only batch N can be -1 when set --dynamic_batch_size, current shape[%s] is %s",
+      "Arglist" : "index,shape"
+    },
+    {
+      "ErrCode" : "E10019",
+      "ErrMessage" : "--input_shape's shape is invalid, only height or width can be -1 when set --dynamic_image_size.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10020",
+      "ErrMessage" : "--dynamic_image_size's number of dimensions of each group must be %s.",
+      "Arglist" : "DynamicImageSizeNum"
+    },
+    {
+      "ErrCode" : "E10021",
+      "ErrMessage" : "Input parameter[--%s]'s path is too long, it must smaller than %s",
+      "Arglist" : "parameter,size"
+    },
+    {
+      "ErrCode" : "E10022",
+      "ErrMessage" : "Input parameter[--%s]'s path[%s] not include file name",
+      "Arglist" : "parameter,filename"
+    },
+    {
+      "ErrCode" : "E10023",
+      "ErrMessage" : "Input parameter[--singleop]'s value[%s] is not a valid path.",
+      "Arglist" : "value"
+    },
+    {
+      "ErrCode" : "E10024",
+      "ErrMessage" : "Open file[%s] provided in input parameter[--singleop] failed.",
+      "Arglist" : "value"
+    },
+    {
+      "ErrCode" : "E10025",
+      "ErrMessage" : "Parse file[%s] provided in input parameter[--singleop] failed, exception = %s",
+      "Arglist" : "realpath,errmsg"
+    },
+    {
+      "ErrCode" : "E10026",
+      "ErrMessage" : "Op name is empty provided in input parameter[--singleop]",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10027",
+      "ErrMessage" : "%s index[%s]'s dataType is invalid provided in input parameter[--singleop]",
+      "Arglist" : "input,index"
+    },
+    {
+      "ErrCode" : "E10028",
+      "ErrMessage" : "%s index[%s]'s format is invalid provided in input parameter[--singleop]",
+      "Arglist" : "input,index"
+    },
+    {
+      "ErrCode" : "E10029",
+      "ErrMessage" : "attr name is empty",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10030",
+      "ErrMessage" : "Parse attrname[%s] failed",
+      "Arglist" : "attrname"
+    },
+    {
+      "ErrCode" : "E10031",
+      "ErrMessage" : "Input parameter[--input_format]'s value[%s] is error, only support NCHW, ND in Caffe model.",
+      "Arglist" : "value"
+    },
+    {
+      "ErrCode" : "E10032",
+      "ErrMessage" : "Input parameter[--input_format]'s value[%s] is error, only support NCHW, NHWC, ND in TensorFlow model.",
+      "Arglist" : "value"
+    },
+    {
+      "ErrCode" : "E10033",
+      "ErrMessage" : "Input parameter[--%s]'s value[%s] must be true or false.",
+      "Arglist" : "parameter,value"
+    },
+    {
+      "ErrCode" : "E10034",
+      "ErrMessage" : "Input parameter[--input_shape]'s opname[%s] is not exist in model",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E10035",
+      "ErrMessage" : "Input parameter[--input_shape]'s opname[%s] is not a input opname",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E10036",
+      "ErrMessage" : "Get path[%s]'s real path failed",
+      "Arglist" : "filepath"
+    },
+    {
+      "ErrCode" : "E10037",
+      "ErrMessage" : "Open file[%s] failed",
+      "Arglist" : "filepath"
+    },
+    {
+      "ErrCode" : "E10038",
+      "ErrMessage" : "File[%s] length is 0, not valid.",
+      "Arglist" : "filepath"
+    },
+    {
+      "ErrCode" : "E10039",
+      "ErrMessage" : "File[%s] size %s is out of limit: %s.",
+      "Arglist" : "filepath,filesize,maxlen"
+    },
+    {
+      "ErrCode" : "E10040",
+      "ErrMessage" : "Fail to open proto file real path is '%s' when orginal file path is '%s'.",
+      "Arglist" : "realpth,protofile"
+    },
+    {
+      "ErrCode" : "E10041",
+      "ErrMessage" : "Parse file[%s] through [google::protobuf::TextFormat::Parse] failed,  please check whether the file is a valid protobuf format file.",
+      "Arglist" : "protofile"
+    },
+    {
+      "ErrCode" : "E10042",
+      "ErrMessage" : "Invalid value for --output_type[%s], only supported DT_FLOAT, DT_FLOAT16, DT_UINT8!",
+      "Arglist" : "value"
+    },
+    {
+      "ErrCode" : "E10043",
+      "ErrMessage" : "At least one batch n must be equal to -1 when set --dynamic_batch_size.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E10045",
+      "ErrMessage" : "Parse op[%s] failed when read json file[%s], exception[%s], jsonStr[%s].",
+      "Arglist" : "index,jsonfile,exception,jsonStr"
+    },
+    {
+      "ErrCode" : "E10046",
+      "ErrMessage" : "Validate op[%s] failed when read json file[%s].",
+      "Arglist" : "index,jsonfile"
+    },
+    {
+      "ErrCode" : "E10047",
+      "ErrMessage" : "Input parameter[--dynamic_batch_size]'s value[%s] is invalid.",
+      "Arglist" : "value"
+    },
+    {
+      "ErrCode" : "E11001",
+      "ErrMessage" : "input_dim and input_shape can not both exist!",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11002",
+      "ErrMessage" : "Model has no input.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11003",
+      "ErrMessage" : "Model input_dim size[%s] is not 4 times of input size[%s].",
+      "Arglist" : "input_dim_size,input_size"
+    },
+    {
+      "ErrCode" : "E11004",
+      "ErrMessage" : "caffe net input_shape size[%s] is not equal input size[%s].",
+      "Arglist" : "input_shape_size,input_size"
+    },
+    {
+      "ErrCode" : "E11005",
+      "ErrMessage" : "Model has no input shape.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11006",
+      "ErrMessage" : "Op[%s] optype[Python] has no python_param.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11007",
+      "ErrMessage" : "If optype is [Python], opname must be [ProposalLayer], but actual opname is [%s].",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11008",
+      "ErrMessage" : "Op type 'DetectionOutput' is confused. Suggest you modify the model file and use a explicit type, such as 'FSRDetectionOutput' or 'SSDDetectionOutput'.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11009",
+      "ErrMessage" : "Unsupport op[%s] optype[%s], you should customize the op at first.",
+      "Arglist" : "opname,optype"
+    },
+    {
+      "ErrCode" : "E11010",
+      "ErrMessage" : "Parse Params for op [%s] fail, optype [%s].",
+      "Arglist" : "opname,optype"
+    },
+    {
+      "ErrCode" : "E11011",
+      "ErrMessage" : "IR for op[%s] optype[%s] is not registered.",
+      "Arglist" : "opname, optype"
+    },
+    {
+      "ErrCode" : "E11012",
+      "ErrMessage" : "Unknown bottom blob '%s', in layer '%s', bottom index:%s.",
+      "Arglist" : "bottom_blob,layer,bottom_index"
+    },
+    {
+      "ErrCode" : "E11013",
+      "ErrMessage" : "Add link failed from op[%s] to op[%s].",
+      "Arglist" : "opname1,opname2"
+    },
+    {
+      "ErrCode" : "E11014",
+      "ErrMessage" : "Failed to find top layer name: %s.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11015",
+      "ErrMessage" : "Failed to find bottom layer name: %s.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11016",
+      "ErrMessage" : "Add op %s to NetOutput faild, current op output index:%s should < %s. NetOutput input_index:%s should < %s.",
+      "Arglist" : "opname,outputindex,totlaloutputindex,inputindex,totlalinputindex"
+    },
+    {
+      "ErrCode" : "E11017",
+      "ErrMessage" : "Can not find out_node:%s, you should check --out_nodes.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11018",
+      "ErrMessage" : "PreCheck validate string failed, opname [%s] can only contains 'a-z' 'A-Z' '0-9' '-' '.' '_'",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11019",
+      "ErrMessage" : "Check op[%s] failed, name repeat.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11020",
+      "ErrMessage" : "Check op[%s]'s optype failed, type not support.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11021",
+      "ErrMessage" : "The model file[%s] is consisted of layers-structure which is deprecated in Caffe and unsupport in ATC. The \"layers\" should be changed to \"layer\".",
+      "Arglist" : "realpath"
+    },
+    {
+      "ErrCode" : "E11022",
+      "ErrMessage" : "net layer num is zero, prototxt file may be invalid.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11023",
+      "ErrMessage" : "The weight file is consisted of layers-structure which is deprecated in Caffe and unsupport in ATC. The \"layers\" should be changed to \"layer\".",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11024",
+      "ErrMessage" : "weight layer num is zero, weight file may be invalid.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11025",
+      "ErrMessage" : "Op[%s] create OpParser failed, optype is %s.",
+      "Arglist" : "opname,optype"
+    },
+    {
+      "ErrCode" : "E11026",
+      "ErrMessage" : "Parse op weights for op[%s] failed",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E11027",
+      "ErrMessage" : "Input_param shape_size is zero.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11028",
+      "ErrMessage" : "Need input op in prototxt.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E11029",
+      "ErrMessage" : "Caffe weights precheck failed, op[%s] can not find in model.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E12001",
+      "ErrMessage" : "Scope fusion pass[%s] is not registered.",
+      "Arglist" : "passname"
+    },
+    {
+      "ErrCode" : "E12002",
+      "ErrMessage" : "Add scope fusion pass[%s] failed.",
+      "Arglist" : "passname"
+    },
+    {
+      "ErrCode" : "E12003",
+      "ErrMessage" : "Run scope fusion pass failed, ret:%s.",
+      "Arglist" : "ret"
+    },
+    {
+      "ErrCode" : "E12004",
+      "ErrMessage" : "Op[%s] register failed, inputIdx[-%s] should bigger than inputsize[%s] when inputIdx < 0.",
+      "Arglist" : "opname,inputIdx,inputsize"
+    },
+    {
+      "ErrCode" : "E12005",
+      "ErrMessage" : "AttrName[%s] has no value!",
+      "Arglist" : "attrname"
+    },
+    {
+      "ErrCode" : "E12006",
+      "ErrMessage" : "Op[%s] remove input failed.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E12007",
+      "ErrMessage" : "Add op[%s] failed.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E12008",
+      "ErrMessage" : "Check op[%s]'s optype failed, type not support.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E12009",
+      "ErrMessage" : "CheckGraphDef op[%s]'s input op[%s] is not exist in the graph_def.",
+      "Arglist" : "opname,inputopname"
+    },
+    {
+      "ErrCode" : "E12010",
+      "ErrMessage" : "Model has no Placeholder node.",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E12011",
+      "ErrMessage" : "IR for op[%s] optype[%s] is not registered.",
+      "Arglist" : "opname,optype"
+    },
+    {
+      "ErrCode" : "E12012",
+      "ErrMessage" : "Input op[%s] not found in graph.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E12013",
+      "ErrMessage" : "Failed to get subgraph by function name %s.",
+      "Arglist" : "functionname"
+    },
+    {
+      "ErrCode" : "E12014",
+      "ErrMessage" : "Add link failed from op[%s] to op[%s].",
+      "Arglist" : "opname1,opname2"
+    },
+    {
+      "ErrCode" : "E12015",
+      "ErrMessage" : "Check op[%s] failed, name repeat.",
+      "Arglist" : "opname"
+    },
+    {
+      "ErrCode" : "E12016",
+      "ErrMessage" : "Failed to parse graph %s, instance name %s.",
+      "Arglist" : "functionname,graphname"
+    },
+    {
+      "ErrCode" : "E12017",
+      "ErrMessage" : "Failed to gen tasks on graph %s for next iteration.",
+      "Arglist" : "graphname"
+    },
+    {
+      "ErrCode" : "E12018",
+      "ErrMessage" : "CheckFusionOp Op[%s]'s optype[%s] not a Fusion OP!",
+      "Arglist" : "opname,optype"
+    },
+    {
+      "ErrCode" : "E12019",
+      "ErrMessage" : "CheckFusionOp op[%s]'s optype[%s] children_nums:%s is not the same for define.",
+      "Arglist" : "opname,optype,childrennums"
+    },
+    {
+      "ErrCode" : "E12020",
+      "ErrMessage" : "CheckFusionOp op[%s]'s optype[%s] has no enough importance child.",
+      "Arglist" : "opname,optype"
+    },
+    {
+      "ErrCode" : "E12021",
+      "ErrMessage" : "Input size of op[%s]:%s is not equal to Output size of op[%s]:%s.",
+      "Arglist" : "opname1,index1,opname2,index2"
+    },
+    {
+      "ErrCode" : "E12022",
+      "ErrMessage" : "stl[stoi] input_node_name[%s] indexstr[%s] is invalid argument!",
+      "Arglist" : "input,index"
+    },
+    {
+      "ErrCode" : "E12023",
+      "ErrMessage" : "stl[stoi] input_node_name[%s] indexstr[%s] is out of range!",
+      "Arglist" : "input,index"
+    },
+    {
+      "ErrCode" : "E12024",
+      "ErrMessage" : "stl[stoi] input_node_name[%s] indexstr[%s] is bad argument!",
+      "Arglist" : "input,index"
+    },
+    {
+      "ErrCode" : "E19001",
+      "ErrMessage" : "Input parameter file or proto is nullptr!",
+      "Arglist" : ""
+    },
+    {
+      "ErrCode" : "E19002",
+      "ErrMessage" : "Path[%s] len is too long, it must smaller than %s",
+      "Arglist" : "filepath,size"
+    },
+    {
+      "ErrCode" : "E19003",
+      "ErrMessage" : "Path[%s] new string object len[%s] failed.",
+      "Arglist" : "filepath,size"
+    },
+    {
+      "ErrCode" : "E19004",
+      "ErrMessage" : "Read proto from binary file, open real path[%s] failed.",
+      "Arglist" : "realpath"
+    },
+    {
+      "ErrCode" : "E19005",
+      "ErrMessage" : "Read proto from binary file, parse file[%s] failed.",
+      "Arglist" : "filepath"
+    },
+    {
+      "ErrCode" : "E19006",
+      "ErrMessage" : "Cannot create directory %s. Make sure the directory exists and writable.",
+      "Arglist" : "path"
+    },
+    {
+      "ErrCode" : "E30000",
+      "ErrMessage" : "System error, load aicpu op libaray information from file %s failed. It does not exist or has wrong content.",
+      "Arglist" : "filename"
+    },
+    {
+      "ErrCode" : "E30001",
+      "ErrMessage" : "System error, load aicpu kernelinfo from json file %s failed. It does not exist or has wrong content.",
+      "Arglist" : "filename"
+    },
+    {
+      "ErrCode" : "E30002",
+      "ErrMessage" : "System error, load IR config file %s failed. It does not exist or has wrong content.",
+      "Arglist" : "filename"
+    },
+    {
+      "ErrCode" : "E30003",
+      "ErrMessage" : "Op[%s] not supportted, %s.",
+      "Arglist" : "opname,errMsg"
+    },
+    {
+      "ErrCode" : "E30004",
+      "ErrMessage" : "Calculate op[%s] running parameter failed, %s.",
+      "Arglist" : "opname,errMsg"
+    },
+    {
+      "ErrCode" : "E30005",
+      "ErrMessage" : "Generate task failed, %s.",
+      "Arglist" : "errMsg"
+    },
+    {
+      "ErrCode" : "E30006",
+      "ErrMessage" : "System error, generate transfer graph failed, %s.",
+      "Arglist" : "errMsg"
+    },
+    {
+      "ErrCode" : "E30007",
+      "ErrMessage" : "System error, optimize sub graph failed, %s.",
+      "Arglist" : "errMsg"
+    },
+    {
+      "ErrCode" : "E35000",
+      "ErrMessage" : "The %sth input of op[%s] has wrong shape%s, the correct shape should be %s.",
+      "Arglist" : "index,opname,wrong_shape,correct_shape"
+    },
+    {
+      "ErrCode" : "E35001",
+      "ErrMessage" : "The attr[%s] of op[%s] has wrong value[%s], the correct value should be %s.",
+      "Arglist" : "attrname,opname,wrong_value,correct_value"
+    },
+    {
+      "ErrCode" : "E35002",
+      "ErrMessage" : "The attr[%s] of op[%s] has wrong value[%s], the correct value should be %s.",
+      "Arglist" : "attrname,opname,wrong_size,correct_size"
+    },
+    {
+      "ErrCode" : "E35003",
+      "ErrMessage" : "Error occur when infer op[%s]'s shape, %s.",
+      "Arglist" : "opname,err_msg"
+    }
+  ]
+}

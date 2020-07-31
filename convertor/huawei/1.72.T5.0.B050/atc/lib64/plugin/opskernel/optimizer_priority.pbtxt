@@ -1,0 +1,1 @@
+optimizer:["aicpu_original_optimizer","AIcoreEngine","VectorEngine","aicpu_optimizer","hccl_graph_optimizer", "hvd_graph_optimizer"]

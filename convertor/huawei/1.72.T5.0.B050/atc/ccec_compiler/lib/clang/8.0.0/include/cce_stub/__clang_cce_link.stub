@@ -1,0 +1,150 @@
+#include <stddef.h> /* for size_t */
+#include <stdio.h>
+#include <stdlib.h>
+
+#if defined(__GNUC__)
+#if defined(__clang__) || (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
+#pragma GCC diagnostic push
+#endif
+#if defined(__clang__) || (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
+#pragma GCC diagnostic ignored "-Wcast-qual"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#pragma GCC diagnostic ignored "-Wunused-function"
+#endif
+#endif
+
+static void *CCEFatCubinHandleAICore;
+static void *CCEFatCubinHandleAICpu;
+
+extern "C" {
+extern int rtDevBinaryRegister(
+  void *fatCubin,
+  void **fatCubinHandle
+);
+extern int rtBinaryRegisterToFastMemory(
+  void *fatCubinHandle
+);
+extern int rtDependencyRegister(
+  void *handleMaster,
+  void *handleSlave
+);
+extern int rtMetadataRegister(
+  void *handle,
+  const char *metaData
+);
+
+extern void rtDevBinaryUnRegister(
+  void *fatCubinHandle
+);
+static void rtUnregisterBinaryUtilAICore(void)
+{
+  rtDevBinaryUnRegister(CCEFatCubinHandleAICore);
+}
+static void rtUnregisterBinaryUtilAICpu(void)
+{
+  rtDevBinaryUnRegister(CCEFatCubinHandleAICpu);
+}
+
+//#if defined(__GNUC__) && !defined(__ANDROID__)
+//
+//extern int atexit(void(*)(void)) throw();
+//
+//#else /* __GNUC__ && !__ANDROID__ */
+//
+//extern int __cdecl atexit(void(__cdecl *)(void));
+//
+//#endif /* __GNUC__ && !__ANDROID__ */
+
+}
+
+#include <__clang_cce_fatBinaryCtl.h>
+
+
+extern "C" {
+#if defined(_WIN32)
+#pragma data_seg("__nv_module_id")
+#endif /* _WIN32 */
+//#include REGISTERLINKBINARYFILE
+#if defined(_WIN32)
+#pragma data_seg()
+#endif /* _WIN32 */
+}
+
+#include CCEFATBINFILE
+
+#if defined(__PGI)
+__attribute__((unused))
+#endif /* __PGI */
+
+extern "C" {
+  __attribute__ ((visibility("hidden"))) void rtLinkedDevBinaryRegister(
+                                 const __fatBinC_Wrapper_t *prelinked_fatbinc,
+                                 void (*callback_fp)(void *),
+                                 int DevBinaryMagicNum)
+  {
+    bool isAicore = false;
+    bool isAicpu = false;
+    static bool isAicoreFirstRegister = true;
+    static bool isAicpuFirstRegister = true;
+    // AICore has two types of cores, one is general, and another one
+    // is specific for vector's compute.
+    if (DevBinaryMagicNum == AICORE_MAGIC_NUM ||
+        DevBinaryMagicNum == AICORE_MAGIC_NUM_VEC) {
+      isAicore = true;
+    } else if (DevBinaryMagicNum == AICPU_MAGIC_NUM) {
+      isAicpu = true;
+    } else {
+      unsigned int MagicNumber = prelinked_fatbinc->magic;
+      // AICore has two types of cores, one is general, and another one
+      // is specific for vector's compute.
+      if (MagicNumber == AICORE_MAGIC_NUM ||
+          MagicNumber == AICORE_MAGIC_NUM_VEC) {
+        isAicore = true;
+      } else if (MagicNumber == AICPU_MAGIC_NUM) {
+        isAicpu = true;
+      }
+    }
+
+     // when this function is called, it must have kernels in the binary,
+     // so we don't need to check whether the callback_fp is not null which
+     // is guaranteed by the compiler.
+
+     // if the binary is registered firstly, then register it, or never
+     // register the binary later.
+#ifdef CCE_FATBINSECTION
+     // CCE_FATBINSECTION macro is defined in the AICore binary C file,
+     // it denotes a valid C file for AICore be present
+     if (isAicoreFirstRegister && isAicore) {
+       isAicoreFirstRegister = false;
+       rtDevBinaryRegister((void*)&__fatDeviceTextAICore, &CCEFatCubinHandleAICore);
+
+#ifdef LOAD_BIN_TO_FAST_MEM
+       rtBinaryRegisterToFastMemory(CCEFatCubinHandleAICore);
+#endif
+
+       atexit(rtUnregisterBinaryUtilAICore);
+     }
+#endif
+
+#ifdef CCE_FATBINSECTIONAICPU
+     if (isAicpuFirstRegister && isAicpu) {
+       isAicpuFirstRegister = false;
+       rtDevBinaryRegister((void*)&__fatDeviceTextAICpu, &CCEFatCubinHandleAICpu);
+       atexit(rtUnregisterBinaryUtilAICpu);
+     }
+#endif
+     // we should register kernel functions every time this function is called
+     // the callback_fp checking can be removed
+     if (isAicore && callback_fp != 0)
+       (*callback_fp)(CCEFatCubinHandleAICore);
+     if (isAicpu && callback_fp != 0)
+       (*callback_fp)(CCEFatCubinHandleAICpu);
+  }
+}
+
+#if defined(__GNUC__)
+#if defined(__clang__) || (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
+#pragma GCC diagnostic pop
+#endif
+#endif

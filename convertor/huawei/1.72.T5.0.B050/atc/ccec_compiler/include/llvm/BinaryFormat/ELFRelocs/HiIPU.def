@@ -1,0 +1,25 @@
+//===- HiIPU.def - Defines RELOC Info -------------------------------------===//
+//
+// Copyright (C) 2018. Huawei Technologies Co., Ltd. All rights reserved.
+//
+//===----------------------------------------------------------------------===//
+//
+// This file defines ELF RELOCATIONS for HiIPU.
+//
+//===----------------------------------------------------------------------===//
+
+#ifndef ELF_RELOC
+#error "ELF_RELOC must be defined"
+#endif
+
+ELF_RELOC(R_HIIPU_NONE,                                 0)
+// Currently, we use the same values as the ones used by ld.lld
+ELF_RELOC(R_AICORE_ABS64,                           0x101)
+ELF_RELOC(R_AICORE_ABS32,                           0x102)
+ELF_RELOC(R_AICORE_PREL32,                          0x105)
+ELF_RELOC(R_AICORE_MOV_LOW16,                       0x115)
+ELF_RELOC(R_AICORE_MOVK_MODE_1,                     0x116)
+ELF_RELOC(R_AICORE_CALL16,                          0x11b)
+ELF_RELOC(R_AICORE_JUMPCMP,                         0x11c)
+ELF_RELOC(R_AICORE_ADRP,                            0x11d)
+ELF_RELOC(R_AICORE_ADD_ABS_LO12,                    0x11e)

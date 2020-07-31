@@ -1,0 +1,5 @@
+Atc_Install_Type=devel
+Atc_Feature_Type=all
+Atc_UserName=alex
+Atc_UserGroup=alex
+Atc_Install_Path_Param=/home/alex/.mindstudio/huawei/adk/1.72.T5.0.B050
