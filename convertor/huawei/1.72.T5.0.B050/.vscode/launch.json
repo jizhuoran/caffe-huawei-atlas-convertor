@@ -1,0 +1,31 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "CONV",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/zrji/ascend_generator/src/operators/conv.py",
+            "env": {"LD_LIBRARY_PATH" : "/home/zrji/mini/1.72.T5.0.B050/atc/lib64"},
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "RELU",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/zrji/ascend_generator/src/operators/relu.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "BLAS",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/zrji/ascend_generator/src/operators/blas.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}
